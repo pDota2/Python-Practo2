@@ -16,12 +16,18 @@ boxend3choice1 = [f'[{person3}] -Правильный ответ.' , f'[{person3
 boxend3choice2 = [f'[{person3}] -Ответ неверный.' , '-Вас задушили подушкой...']
 boxend1 = ['-Вы проиграли суд.' , '-Успешно пронесли и перердали порошок.' , '-Через пару дней к вам подошел зек которому вы передали порошок.' , f'[{person3}] -ЭТО ПАЛЕНЫЙ ТОВАР! ТРЕБУЮ ВЕРНУТЬ МНЕ ДЕНЬГИ! У ТЕБЯ СУТКИ!' , '-Конечно же, вы не знали что товар который зек купил у мента окажется паленым.' , '-Вы не смогли найти необходимую сумму денег.' , 'Следующей ночью вам перерезали горло зубной щеткой, заточенной об стену...']
 mainbox = []
-def main():
+def startgame():
     os.system('cls')
     print('Для старта нажмите [Space]...')
     keyboard.wait('Space')
     messagebox(mainbox=box1, indexchoice=indexchoice, indexbox=False, end=False)
         
+def endgame(mainbox=mainbox):
+    for message in mainbox:
+        print("".join(message))
+        time.sleep(1,5)
+    exit(print('Спасибо за игру!'))
+    
 def messagebox(mainbox, indexchoice, indexbox, end):
     os.system('cls')
     for message in mainbox:
@@ -39,8 +45,9 @@ def choicechecker(indexchoice, indexbox, end):
         keyboard.wait('Space')
         messagebox(mainbox=box3, indexchoice=4, indexbox=False, end=False)
     if end == True:
-        exit(print('Спасибо за игру!'))
+        endgame(mainbox=mainbox)
     choice(indexchoice)
+
 
 def choice(indexchoice):
     print('Ваше действие: ')
@@ -78,7 +85,7 @@ def choice(indexchoice):
                 case '2':
                     return messagebox(mainbox=boxend3choice2, indexchoice=indexchoice, indexbox=False, end=True)
 
-main()        
+startgame()        
 
 
 
